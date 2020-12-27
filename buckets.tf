@@ -27,3 +27,8 @@ resource "aws_s3_bucket" "private-bucket" {
     Environment = "test"
   }
 }
+
+resource "aws_s3_bucket" "team-buckets" {
+  for_each = local.buckets
+  bucket   = "${local.aws_account}-${each.value}"
+}
