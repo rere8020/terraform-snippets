@@ -91,13 +91,13 @@ resource "aws_iam_group" "developers_group" {
 }
 
 resource "aws_iam_user" "test-developer" {
-    name = "Tommy-Jones"
-    tags = {
-        tag-key = "dev-team"
-    }
+  name = "Tommy-Jones"
+  tags = {
+    tag-key = "dev-team"
+  }
 }
 
 resource "aws_iam_user_group_membership" "add_developer_dev" {
-    user =  aws_iam_user.test-developer.name
-    groups = [aws_iam_group.developers_group.name]
+  user   = aws_iam_user.test-developer.name
+  groups = [aws_iam_group.developers_group.name]
 }

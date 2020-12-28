@@ -12,17 +12,3 @@ provider "aws" {
   profile = "default"
   region  = "us-east-1"
 }
-
-#create a locals variable to use, used the lower function to lowercase the user_id
-locals {
-  aws_account = "${data.aws_caller_identity.current.account_id}-${lower(data.aws_caller_identity.current.user_id)}"
-}
-
-#create a local to use in a for_each loop
-locals {
-  buckets = {
-    bucket1 = "team-bucket1"
-    bucket2 = "team-bucket2"
-    bucket3 = "team-bucket3"
-  }
-}

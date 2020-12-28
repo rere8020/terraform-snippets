@@ -32,3 +32,10 @@ resource "aws_s3_bucket" "team-buckets" {
   for_each = local.buckets
   bucket   = "${local.aws_account}-${each.value}"
 }
+
+#using this as example to create buckets using a comparison statement in locals
+#starts bucket count with index 7 up to bucket count
+resource "aws_s3_bucket" "many_buckets" {
+  count  = local.number_of_buckets
+  bucket = "${local.aws_account}-bucket${count.index + 7}"
+}
